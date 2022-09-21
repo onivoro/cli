@@ -1,5 +1,5 @@
 {
-  "name": "cli",
+  "name": "@onivoro/cli",
   "version": "0.0.0",
   "license": "MIT",
   "bin": {
