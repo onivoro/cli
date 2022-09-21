@@ -13,7 +13,6 @@ export class BasicCommand extends CommandRunner {
     passedParam: string[],
     options?: BasicCommandOptions,
   ): Promise<void> {
-    console.log('runningasdf')
     if (options?.boolean !== undefined && options?.boolean !== null) {
       this.runWithBoolean(passedParam, options.boolean);
     } else if (options?.number) {

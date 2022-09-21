@@ -1,7 +1,7 @@
 import { Command, CommandRunner, Option } from 'nest-commander';
 import { zipDirectory } from '@oni/util';
 
-interface BasicCommandOptions {
+interface ZipCommandOptions {
   src: string;
   dest?: string;
 }
@@ -11,7 +11,7 @@ export class ZipCommand extends CommandRunner {
 
   async run(
     _passedParam: string[],
-    options?: BasicCommandOptions,
+    options?: ZipCommandOptions,
   ): Promise<void> {
     const {src, dest} = options;
     await zipDirectory(src, `${(dest || src)}.zip`.replace('.zip.zip', '.zip'))
