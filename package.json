@@ -2,9 +2,12 @@
   "name": "cli",
   "version": "0.0.0",
   "license": "MIT",
+  "bin": {
+    "oni": "dist/apps/cli/main.js"
+  },
   "scripts": {
     "start": "nx serve",
-    "build": "nx build",
+    "build": "nx build && sed '1i\\\\' && chmod +x dist/apps/cli/main.js",
     "test": "nx test"
   },
   "private": true,
@@ -12,6 +15,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "nest-commander": "^3.1.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
     "tslib": "^2.3.0"
