@@ -4,8 +4,9 @@ export async function addPackageJson(name: string, packagePath: string) {
     await writeFile(packagePath, `{
       "name": "${name}",
       "version": "0.0.1",
-      "main": "dist/index.cjs.js",
-      "module": "dist/index.esm.js",
+      "main": "dist/cjs/src/index.js",
+      "module": "dist/esm/src/index.js",
+      "types": "dist/types/src/index.d.ts",
       "files": [
         "dist/*"
       ],

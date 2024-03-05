@@ -21,17 +21,25 @@ export async function addTsconfig(tsconfigPath: string) {
         }
       }`),
         writeFile('tsconfig.esm.json', `{
-        "extends": "${tsconfigPath}",
+        "extends": "./${tsconfigPath}",
         "compilerOptions": {
           "outDir": "./dist/esm",
           "module": "esnext"
         }
       }`),
       writeFile('tsconfig.cjs.json', `{
-        "extends": "${tsconfigPath}",
+        "extends": "./${tsconfigPath}",
         "compilerOptions": {
             "outDir": "./dist/cjs",
             "module": "commonjs"
+          }
+      }`),
+      writeFile('tsconfig.types.json', `{
+        "extends": "./${tsconfigPath}",
+        "compilerOptions": {
+            "outDir": "./dist/types",
+            "declaration": true,
+            "emitDeclarationOnly": true
           }
       }`)
     ]);
