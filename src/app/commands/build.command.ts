@@ -1,6 +1,7 @@
+import { execSync } from 'child_process';
 import { Command, CommandRunner, Option } from 'nest-commander';
 
-type IParams = { email: string, password: string };
+type IParams = any;
 
 @Command({ name: Build.name })
 export class Build extends CommandRunner {
@@ -14,27 +15,8 @@ export class Build extends CommandRunner {
         return this.main([], params);
     }
 
-    async main(_args: string[], { email, password }: IParams): Promise<void> {
-        console.log({ password, email })
-    }
-
-    @Option({
-        flags: '-e, --email [email]',
-        description:
-            'user email',
-        required: true
-    })
-    parseEmail(val: string) {
-        return val;
-    }
-
-    @Option({
-        flags: '-p, --password [password]',
-        description:
-            'new password',
-        required: true
-    })
-    parsePassword(val: string) {
-        return val;
+    async main(_args: string[], params: IParams): Promise<void> {
+        execSync(`rm -rf dist && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json`);
+        execSync(`echo '{"type": "module"}' > dist/esm/package.json`);
     }
 }

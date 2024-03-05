@@ -10,12 +10,8 @@ export async function addPackageJson(name: string, packagePath: string) {
         "dist/*"
       ],
       "scripts": {
-        "ts": "npx tsc --module es2022 --outDir esm/ && echo '{\"type\": \"module\"}' > dist/esm/package.json",
-        "push": "npm publish --access public",
-        "compile": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
-        "build:clean": "rm -rf ./build",
-        "build": "npm run build:clean && npm run compile && npm run hack",
-        "hack": "echo '{\"type\": \"module\"}' > dist/esm/package.json"
+        "push": "onx Publish",
+        "build": "onx Build"
       },
       "exports": {
         ".": {
