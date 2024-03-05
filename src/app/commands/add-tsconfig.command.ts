@@ -26,7 +26,7 @@ export class AddTsconfig extends CommandRunner {
 
                 const url = `https://raw.githubusercontent.com/tsconfig/bases/main/bases/node${major}.json`;
 
-                execSync(`curl ${url} >> ${tsconfigPath}`);
+                execSync(`curl ${url} > ${tsconfigPath}`);
             } catch (e: any) {
                 console.error(`Failed to create tsconfig.json`, e);
                 return;
