@@ -1,15 +1,15 @@
 {
   "name": "@onivoro/cli",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "",
   "private": false,
   "license": "UNLICENSED",
   "bin": {
-    "onx": "main.js"
+    "onx": "dist/main.js"
   },
   "files": [
     "dist/*",
-    "assets/*"
+    "src/assets/**/*"
   ],
   "scripts": {
     "build": "nest build",
