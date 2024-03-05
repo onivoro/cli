@@ -3,10 +3,14 @@ import { getEngines } from "./get-engines.function";
 
 export async function addPackageJson(name: string, packagePath: string, platform: string) {
   const nodeTypes = platform === 'server'
-    ? `"@types/node": "${getEngines().node}"`
+    ? `"@types/node": "${getEngines().node}",`
     : '';
 
-    await writeFile(packagePath, `{
+  const webTypes = platform === 'browser'
+    ? `"@typescript/lib-dom": "npm:@types/web@^0.0.140",`
+    : '';
+
+  await writeFile(packagePath, `{
       "name": "${name}",
       "version": "0.0.1",
       "main": "dist/cjs/index.js",
@@ -36,6 +40,7 @@ export async function addPackageJson(name: string, packagePath: string, platform
       "devDependencies": {
         "@onivoro/cli": "*",
         "@types/jest": "*",
+        ${webTypes}
         ${nodeTypes}
         "typescript": "*"
       }
