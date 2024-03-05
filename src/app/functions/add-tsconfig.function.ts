@@ -12,7 +12,8 @@ export async function addTsconfig(tsconfigPath: string) {
             "node_modules",
             "test",
             "dist",
-            "**/*spec.ts"
+            "**/*spec.ts",
+            "**/*.snap"
           ],
         "compilerOptions": {
           "declaration": true,

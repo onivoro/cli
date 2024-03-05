@@ -6,9 +6,10 @@ import { Build } from './commands/build.command';
 import { Library } from './commands/library.command';
 import { Publish } from './commands/publish.command';
 import { Update } from './commands/update.command';
+import { Test } from './commands/test.command';
 
 @Module({
-  providers: [AddEngines, AddGitignore, AddTsconfig, Build, Library, Publish, Update],
+  providers: [AddEngines, AddGitignore, AddTsconfig, Build, Library, Publish, Test, Update],
   imports: [],
 })
 export class CliModule { }
