@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
-import { readFile, writeFile } from 'fs/promises';
 import { Command, CommandRunner, Option } from 'nest-commander';
+import { usingPackage } from '../functions/using-package.function';
 
 const packagePath = './package.json';
 
@@ -16,21 +16,13 @@ export class Update extends CommandRunner {
     }
 
     async main(_args: string[], params: any): Promise<void> {
-        let content: string;
-        let json: any;
-
-        try {
-            content = await readFile(packagePath, {encoding: 'utf-8'});
-        } catch (e: any) {
-            console.error(`Failed to read package.json`, e);
-            return;
-        }
-
-        try {
-            execSync('npx --yes npm-check-updates');
-        } catch (e: any) {
-            console.error(`Failed to check for updates`, e);
-            return;
-        }
+        await usingPackage(packagePath, async (json) => {
+            try {
+                execSync('npx --yes npm-check-updates');
+            } catch (e: any) {
+                console.error(`Failed to check for updates`, e);
+                return;
+            }
+        });
     }
 }
