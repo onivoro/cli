@@ -20,27 +20,27 @@ export async function addTsconfig(tsconfigPath: string) {
           "esModuleInterop": false
         }
       }`),
-        writeFile('tsconfig.esm.json', `{
-        "extends": "./${tsconfigPath}",
-        "compilerOptions": {
-          "outDir": "./dist/esm",
-          "module": "esnext"
-        }
-      }`),
-      writeFile('tsconfig.cjs.json', `{
-        "extends": "./${tsconfigPath}",
-        "compilerOptions": {
-            "outDir": "./dist/cjs",
-            "module": "commonjs"
-          }
-      }`),
-      writeFile('tsconfig.types.json', `{
-        "extends": "./${tsconfigPath}",
-        "compilerOptions": {
-            "outDir": "./dist/types",
-            "declaration": true,
-            "emitDeclarationOnly": true
-          }
-      }`)
+      //   writeFile('tsconfig.esm.json', `{
+      //   "extends": "./${tsconfigPath}",
+      //   "compilerOptions": {
+      //     "outDir": "./dist/esm",
+      //     "module": "esnext"
+      //   }
+      // }`),
+      // writeFile('tsconfig.cjs.json', `{
+      //   "extends": "./${tsconfigPath}",
+      //   "compilerOptions": {
+      //       "outDir": "./dist/cjs",
+      //       "module": "commonjs"
+      //     }
+      // }`),
+      // writeFile('tsconfig.types.json', `{
+      //   "extends": "./${tsconfigPath}",
+      //   "compilerOptions": {
+      //       "outDir": "./dist/types",
+      //       "declaration": true,
+      //       "emitDeclarationOnly": true
+      //     }
+      // }`)
     ]);
 }
