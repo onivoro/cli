@@ -1,6 +1,11 @@
 import { writeFile } from "fs/promises";
+import { getEngines } from "./get-engines.function";
 
-export async function addPackageJson(name: string, packagePath: string) {
+export async function addPackageJson(name: string, packagePath: string, platform: string) {
+  const nodeTypes = platform === 'server'
+    ? `"@types/node": "${getEngines().node}"`
+    : '';
+
     await writeFile(packagePath, `{
       "name": "${name}",
       "version": "0.0.1",
@@ -25,9 +30,13 @@ export async function addPackageJson(name: string, packagePath: string) {
           "default": "./dist/esm/lib.js"
         }
       },
+      "onx": {
+        "platform": "${platform}"
+      },
       "devDependencies": {
         "@onivoro/cli": "*",
         "@types/jest": "*",
+        ${nodeTypes}
         "typescript": "*"
       }
     }`);

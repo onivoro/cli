@@ -25,7 +25,7 @@ export class Library extends CommandRunner {
         await mkdir(directory);
         process.chdir(directory);
         await addTsconfig('tsconfig.json');
-        await addPackageJson(name, packagePath);
+        await addPackageJson(name, packagePath, platform);
         await addEngines(packagePath);
         await addGitignore();
     }
@@ -33,8 +33,8 @@ export class Library extends CommandRunner {
     @Option({
         flags: '-p, --platform [platform]',
         description:
-            'The platform that the library will be built for: isomorphic, server, browser',
-        required: false
+            'The platform that the library will be built for: isomorphic|server|browser',
+        required: true
     })
     parsePlatform(val: string) {
         return val;
