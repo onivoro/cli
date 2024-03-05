@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "nest build",
-    "release": "nest build && cp package.json dist && cd dist && npm publish --access public",
+    "release": "nest build && npm version patch && cp package.json dist && cd dist && npm publish --access public",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
