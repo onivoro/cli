@@ -22,6 +22,7 @@ export class Library extends CommandRunner {
         const packagePath = 'package.json';
         const directory = name.split('/').pop();
         await mkdir(directory);
+        process.chdir(directory);
         await addTsconfig('tsconfig.json');
         await addPackageJson(name, packagePath);
         await addEngines(packagePath);
