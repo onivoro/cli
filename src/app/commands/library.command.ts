@@ -3,6 +3,7 @@ import { Command, CommandRunner, Option } from 'nest-commander';
 import { addTsconfig } from '../functions/add-tsconfig.function';
 import { addPackageJson } from '../functions/add-package-json.function';
 import { addEngines } from '../functions/add-engines.function';
+import { addGitignore } from '../functions/add-gitignore.function';
 
 type IParams = { name: string, platform: string };
 
@@ -26,6 +27,7 @@ export class Library extends CommandRunner {
         await addTsconfig('tsconfig.json');
         await addPackageJson(name, packagePath);
         await addEngines(packagePath);
+        await addGitignore();
     }
 
     @Option({
