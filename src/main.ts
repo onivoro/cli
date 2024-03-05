@@ -1,8 +1,11 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+#! /usr/bin/env node
+
+import { CommandFactory } from 'nest-commander';
+
+import { CliEvoModule } from './app/cli-evo.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  await CommandFactory.run(CliEvoModule, ['warn', 'error']);
 }
-bootstrap();
+
+void bootstrap();

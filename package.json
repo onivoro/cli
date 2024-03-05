@@ -1,12 +1,15 @@
 {
-  "name": "cli",
+  "name": "@onivoro/cli",
   "version": "0.0.1",
   "description": "",
-  "author": "",
-  "private": true,
+  "private": false,
   "license": "UNLICENSED",
+  "bin": {
+    "onx": "main.js"
+  },
   "scripts": {
     "build": "nest build",
+    "release": "nest build && cp package.json dist && cd dist && npm publish --access public",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
