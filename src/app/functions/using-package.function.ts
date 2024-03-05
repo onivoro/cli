@@ -24,6 +24,10 @@ export async function usingPackage(packagePath: string, fn: (json: any) => Promi
         return;
     }
 
+    if(updatedJson) {
+        console.log(updatedJson);
+    }
+
     try {
         await writeFile(packagePath, JSON.stringify(json, null, 4));
     } catch (e: any) {

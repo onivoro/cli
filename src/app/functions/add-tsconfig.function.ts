@@ -6,7 +6,7 @@ export async function addTsconfig(tsconfigPath: string) {
     await Promise.all([
         writeFile(tsconfigPath, `{
         "$schema": "https://json.schemastore.org/tsconfig",
-        "extends": "node_modules/@onivoro/cli/src/assets/tsconfig.${major}.json",
+        "extends": "./node_modules/@onivoro/cli/src/assets/tsconfig.${major}.json",
         "include": ["src/**/*.ts"],
           "exclude": [
             "node_modules",
