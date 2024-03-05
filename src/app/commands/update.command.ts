@@ -18,7 +18,7 @@ export class Update extends CommandRunner {
     async main(_args: string[], params: any): Promise<void> {
         await usingPackage(packagePath, async (json) => {
             try {
-                execSync('npx --yes npm-check-updates');
+                execSync('ncu -u');
             } catch (e: any) {
                 console.error(`Failed to check for updates`, e);
                 return;
