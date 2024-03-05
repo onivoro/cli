@@ -2,10 +2,10 @@
 
 import { CommandFactory } from 'nest-commander';
 
-import { CliEvoModule } from './app/cli-evo.module';
+import { CliModule } from './app/cli.module';
 
 async function bootstrap() {
-  await CommandFactory.run(CliEvoModule, ['warn', 'error']);
+  await CommandFactory.run(CliModule, ['warn', 'error']);
 }
 
 void bootstrap();
