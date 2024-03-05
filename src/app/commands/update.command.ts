@@ -4,8 +4,8 @@ import { Command, CommandRunner, Option } from 'nest-commander';
 
 const packagePath = './package.json';
 
-@Command({ name: AddEngines.name })
-export class AddEngines extends CommandRunner {
+@Command({ name: Update.name })
+export class Update extends CommandRunner {
     constructor(
     ) {
         super();
@@ -27,23 +27,9 @@ export class AddEngines extends CommandRunner {
         }
 
         try {
-            json = JSON.parse(content);
+            execSync('npx --yes npm-check-updates');
         } catch (e: any) {
-            console.error(`Failed to parse package.json`, e);
-            return;
-        }
-
-        const node = execSync('node -v').toString().replace('\n', '');
-        const npm = execSync('npm -v').toString().replace('\n', '');
-
-        json.engines = {
-            node, npm
-        };
-
-        try {
-            await writeFile(packagePath, JSON.stringify(json, null, 4));
-        } catch (e: any) {
-            console.error(`Failed to update package.json`, e);
+            console.error(`Failed to check for updates`, e);
             return;
         }
     }
