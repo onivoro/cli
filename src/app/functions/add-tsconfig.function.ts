@@ -6,18 +6,18 @@ export async function addTsconfig(tsconfigPath: string) {
     await Promise.all([
         writeFile(tsconfigPath, `{
         "$schema": "https://json.schemastore.org/tsconfig",
-        "extends": "node_modules/@onivoro/cli/assets/tsconfig.${major}.json",
-        "compilerOptions": {
-          "declaration": true,
-          "strict": false,
-          "esModuleInterop": false,
-          "include": ["src/**/*.ts"],
+        "extends": "node_modules/@onivoro/cli/src/assets/tsconfig.${major}.json",
+        "include": ["src/**/*.ts"],
           "exclude": [
             "node_modules",
             "test",
             "dist",
             "**/*spec.ts"
-          ]
+          ],
+        "compilerOptions": {
+          "declaration": true,
+          "strict": false,
+          "esModuleInterop": false
         }
       }`),
         writeFile('tsconfig.esm.json', `{
