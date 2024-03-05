@@ -1,15 +1,19 @@
 {
   "name": "@onivoro/cli",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "",
   "private": false,
   "license": "UNLICENSED",
   "bin": {
     "onx": "main.js"
   },
+  "files": [
+    "dist/*",
+    "assets/*"
+  ],
   "scripts": {
     "build": "nest build",
-    "release": "nest build && npm version patch && cp package.json dist && cd dist && npm publish --access public",
+    "release": "nest build && npm version patch && npm publish --access public",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -51,7 +55,7 @@
     "ts-loader": "^9.4.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.1.3"
+    "typescript": "^5.3.3"
   },
   "jest": {
     "moduleFileExtensions": [
