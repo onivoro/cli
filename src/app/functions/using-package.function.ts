@@ -29,7 +29,7 @@ export async function usingPackage(packagePath: string, fn: (json: any) => Promi
     }
 
     try {
-        await writeFile(packagePath, JSON.stringify(json, null, 4));
+        await writeFile(packagePath, JSON.stringify(updatedJson, null, 4));
     } catch (e: any) {
         console.error(`Failed to update package.json`, e);
         return;
