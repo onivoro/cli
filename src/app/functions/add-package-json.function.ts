@@ -11,8 +11,11 @@ export async function addPackageJson(name: string, packagePath: string) {
         "dist/*"
       ],
       "scripts": {
-        "push": "onx Publish",
-        "build": "onx Build"
+        "onx": "onx",
+        "build": "onx Build",
+        "deploy": "onx Publish",
+        "test": "onx Test",
+        "update": "onx Update"
       },
       "exports": {
         ".": {
