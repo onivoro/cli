@@ -18,7 +18,8 @@ export class Build extends CommandRunner {
     async main(_args: string[], params: IParams): Promise<void> {
         execSync(`rm -rf dist`);
         execSync(`tsc -m nodenext --outDir './dist/esm'`);
-        execSync(`echo '{"type": "module"}' > dist/esm/package.json`);
+        // this next line should only be run if it's a REAL esm module
+        // execSync(`echo '{"type": "module"}' > dist/esm/package.json`);
         execSync(`tsc --outDir './dist/types' --emitDeclarationOnly --declaration`);
         execSync(`tsc -m nodenext --outDir './dist/cjs'`);
 
