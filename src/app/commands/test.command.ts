@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { shell as execSync } from '../functions/shell.function';
 import { Command, CommandRunner } from 'nest-commander';
 
 @Command({ name: Test.name })
@@ -14,6 +14,6 @@ export class Test extends CommandRunner {
     }
 
     async main(_args: string[], params: any): Promise<void> {
-     execSync(`bun test`);
+        execSync(`bun test`);
     }
 }

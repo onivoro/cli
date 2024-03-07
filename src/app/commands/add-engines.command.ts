@@ -1,4 +1,4 @@
-import { Command, CommandRunner, Option } from 'nest-commander';
+import { Command, CommandRunner } from 'nest-commander';
 import { addEngines } from '../functions/add-engines.function';
 
 const packagePath = './package.json';

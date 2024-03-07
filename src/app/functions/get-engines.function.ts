@@ -1,4 +1,4 @@
-import { execSync } from "child_process";
+import { shell as execSync } from '../functions/shell.function';
 
 export function getEngines() {
     const node = execSync('node -v').toString().replace('\n', '').replace('v', '');

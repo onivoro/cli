@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { shell as execSync } from '../functions/shell.function';
 import { Command, CommandRunner, Option } from 'nest-commander';
 import { usingPackage } from '../functions/using-package.function';
 

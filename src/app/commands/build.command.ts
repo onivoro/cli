@@ -1,5 +1,5 @@
-import { execSync, spawn } from 'child_process';
-import { Command, CommandRunner, Option } from 'nest-commander';
+import { shell as execSync } from '../functions/shell.function';
+import { Command, CommandRunner } from 'nest-commander';
 
 type IParams = any;
 
