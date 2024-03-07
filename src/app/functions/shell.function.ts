@@ -1,4 +1,4 @@
-import { shell as execSync } from '../functions/shell.function';
+import { execSync } from 'node:child_process';
 
 export function shell(cmd: string) {
   console.log(`\n${cmd}\n`);
