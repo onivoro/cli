@@ -7,8 +7,8 @@ export function shell(cmd: string) {
     console.log(`${output}\n`);
     return output;
   } catch (error: any) {
-    console.log(error?.stdout?.toString());
-    console.log(error?.stderr?.toString());
+    console.log(error?.stdout?.toString?.());
+    console.log(error?.stderr?.toString?.());
     throw error;
   }
 }

@@ -32,7 +32,8 @@ export class Build extends CommandRunner {
 
             execSync(`tsc -m nodenext --outDir './dist/cjs'`);
         } catch (e: unknown) {
-            process.exit(1)
+            execSync(`rm -rf dist`);
+            process.exit(1);
         }
     }
 }
