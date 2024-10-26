@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "nest build",
+    "deploy": "npm publish --access public",
     "release": "nest build && npm version patch && npm publish --access public",
     "start": "nest start",
     "start:dev": "nest start --watch",
