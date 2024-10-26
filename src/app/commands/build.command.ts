@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { shell as execSync } from '../functions/shell.function';
 import { Command, CommandRunner } from 'nest-commander';
 
@@ -16,12 +17,23 @@ export class Build extends CommandRunner {
     }
 
     async main(_args: string[], params: IParams): Promise<void> {
-        execSync(`rm -rf dist`);
-        execSync(`tsc -m nodenext --outDir './dist/esm'`);
-        // this next line should only be run if it's a REAL esm module
-        // execSync(`echo '{"type": "module"}' > dist/esm/package.json`);
-        execSync(`tsc --outDir './dist/types' --emitDeclarationOnly --declaration`);
-        execSync(`tsc -m nodenext --outDir './dist/cjs'`);
+        try {
+            execSync(`tsc --outDir './dist/types' --emitDeclarationOnly --declaration`);
 
+            const { onx } = JSON.parse(readFileSync('package.json', { encoding: 'utf-8' }) || '{}');
+
+            execSync(`rm -rf dist`);
+
+            execSync(`tsc -m nodenext --outDir './dist/esm'`);
+
+            if(onx?.module === 'esm') {
+                execSync(`echo '{"type": "module"}' > dist/esm/package.json`);
+            }
+
+            execSync(`tsc -m nodenext --outDir './dist/cjs'`);
+        } catch (e: unknown) {
+            console.log('Build failed', e);
+            process.exit(1)
+        }
     }
 }
