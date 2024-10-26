@@ -32,7 +32,6 @@ export class Build extends CommandRunner {
 
             execSync(`tsc -m nodenext --outDir './dist/cjs'`);
         } catch (e: unknown) {
-            console.log('Build failed', e);
             process.exit(1)
         }
     }
