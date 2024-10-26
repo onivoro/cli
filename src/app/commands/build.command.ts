@@ -18,11 +18,11 @@ export class Build extends CommandRunner {
 
     async main(_args: string[], params: IParams): Promise<void> {
         try {
+            execSync(`rm -rf dist`);
+
             execSync(`tsc --outDir './dist/types' --emitDeclarationOnly --declaration`);
 
             const { onx } = JSON.parse(readFileSync('package.json', { encoding: 'utf-8' }) || '{}');
-
-            execSync(`rm -rf dist`);
 
             execSync(`tsc -m nodenext --outDir './dist/esm'`);
 
